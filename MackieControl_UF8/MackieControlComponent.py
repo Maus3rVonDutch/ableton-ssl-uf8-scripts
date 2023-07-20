@@ -46,4 +46,8 @@ class MackieControlComponent(object):
 
     def request_rebuild_midi_map(self):
         self._MackieControlComponent__main_script.request_rebuild_midi_map()
+    
+    # Maus3r
+    def log(self, msg):
+        self._MackieControlComponent__main_script.show_message(msg)
 # okay decompiling C:\ProgramData\Ableton\Live 11 Suite\Resources\MIDI Remote Scripts\MackieControl_UF8\MackieControlComponent.pyc

@@ -12,6 +12,9 @@ from _Generic.Devices import *
 from .MackieControlComponent import *
 flatten_target = lambda routing_target: routing_target.display_name
 
+# Maus3r
+NavDirection = Live.Application.Application.View.NavDirection
+
 def flatten_target_list(target_list):
     target_names = []
     for target in target_list:
@@ -143,6 +146,9 @@ class ChannelStripController(MackieControlComponent):
         self._ChannelStripController__apply_meter_mode(meter_state_changed=True)
 
     def handle_assignment_switch_ids(self, switch_id, value):
+        # Maus3r
+        MackieControlComponent.log(self, f'[assignment] swith id [{switch_id}] value: {value}')
+
         if switch_id == SID_ASSIGNMENT_IO:
             if value == BUTTON_PRESSED:
                 self._ChannelStripController__set_assignment_mode(CSM_IO)
@@ -187,18 +193,22 @@ class ChannelStripController(MackieControlComponent):
                                     else:
                                         if switch_id == SID_FADERBANK_PREV_CH:
                                             if value == BUTTON_PRESSED:
-                                                if self.shift_is_pressed():
-                                                    self._ChannelStripController__set_channel_offset(0)
-                                                else:
-                                                    self._ChannelStripController__set_channel_offset(self._ChannelStripController__strip_offset() - 1)
+                                                # Maus3r
+                                                self.application().view.scroll_view(NavDirection.left, '', False)
+                                            #     if self.shift_is_pressed():
+                                            #         self._ChannelStripController__set_channel_offset(0)
+                                            #     else:
+                                            #         self._ChannelStripController__set_channel_offset(self._ChannelStripController__strip_offset() - 1)
                                         else:
                                             if switch_id == SID_FADERBANK_NEXT_CH:
                                                 if value == BUTTON_PRESSED:
-                                                    if self.shift_is_pressed():
-                                                        self._ChannelStripController__set_channel_offset(self._ChannelStripController__controlled_num_of_tracks() - len(self._ChannelStripController__channel_strips))
-                                                    else:
-                                                        if self._ChannelStripController__strip_offset() < self._ChannelStripController__controlled_num_of_tracks() - len(self._ChannelStripController__channel_strips):
-                                                            self._ChannelStripController__set_channel_offset(self._ChannelStripController__strip_offset() + 1)
+                                                     # Maus3r
+                                                    self.application().view.scroll_view(NavDirection.right, '', False)
+                                                #     if self.shift_is_pressed():
+                                                #         self._ChannelStripController__set_channel_offset(self._ChannelStripController__controlled_num_of_tracks() - len(self._ChannelStripController__channel_strips))
+                                                #     else:
+                                                #         if self._ChannelStripController__strip_offset() < self._ChannelStripController__controlled_num_of_tracks() - len(self._ChannelStripController__channel_strips):
+                                                #             self._ChannelStripController__set_channel_offset(self._ChannelStripController__strip_offset() + 1)
                                             else:
                                                 if switch_id == SID_FADERBANK_FLIP:
                                                     if value == BUTTON_PRESSED:
@@ -755,6 +765,17 @@ class ChannelStripController(MackieControlComponent):
                 self._ChannelStripController__reassign_channel_strip_parameters(for_display_only=False)
                 self._ChannelStripController__update_assignment_display()
                 self.request_rebuild_midi_map()
+        
+        # Maus3r next 3 lines ensure banks move to selected track.  NB only apply auto-banking when not in "returns" mode
+        if self._ChannelStripController__view_returns == False:
+            selected_track = self.song().view.selected_track
+            all_tracks = self.song().visible_tracks
+            trackIndex = list(all_tracks).index(selected_track)
+            assignmentMode = self._ChannelStripController__assignment_mode
+            MackieControlComponent.log(self, f'track index [{trackIndex}] - mode [{assignmentMode}]')
+
+            index = int(trackIndex/8)*8
+            self._ChannelStripController__set_channel_offset(index)
 
     def __on_flip_changed(self):
         self._ChannelStripController__update_flip_led()
