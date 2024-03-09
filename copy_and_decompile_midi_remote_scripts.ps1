@@ -3,8 +3,8 @@
 # NB using uncompyle6 results in incorrect output for py 3.7/3.8, see: https://pypi.org/project/decompyle3/#toc-entry-3
 
 # Set the source and destination folder paths
-$sourceFolderPath = "C:\ProgramData\Ableton\Live 11 Suite\Resources\MIDI Remote Scripts\MackieControl"
-$destinationFolderPath = "C:\ProgramData\Ableton\Live 11 Suite\Resources\MIDI Remote Scripts\MackieControl_UF8"
+$sourceFolderPath = "C:\ProgramData\Ableton\Live 12 Suite\Resources\MIDI Remote Scripts\MackieControl"
+$destinationFolderPath = "C:\ProgramData\Ableton\Live 12 Suite\Resources\MIDI Remote Scripts\MackieControl_UF8"
 
 # Copy the source folder to the destination folder
 Copy-Item -Path $sourceFolderPath -Destination $destinationFolderPath -Recurse

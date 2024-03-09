@@ -2,8 +2,8 @@
 # Python bytecode version base 3.7.0 (3394)
 # Decompiled from: Python 3.8.9 (tags/v3.8.9:a743f81, Apr  6 2021, 14:02:34) [MSC v.1928 64 bit (AMD64)]
 # Embedded file name: ..\..\..\output\Live\win_64_static\Release\python-bundle\MIDI Remote Scripts\MackieControl\Transport.py
-# Compiled at: 2023-03-03 17:20:11
-# Size of source mod 2**32: 25809 bytes
+# Compiled at: 2024-01-31 17:08:32
+# Size of source mod 2**32: 25148 bytes
 from __future__ import absolute_import, division, print_function, unicode_literals
 from past.utils import old_div
 from ableton.v2.base import move_current_song_time
@@ -494,4 +494,4 @@ class Transport(MackieControlComponent):
             self.send_midi((NOTE_ON_STATUS, SID_MARKER_PO, BUTTON_STATE_ON))
         else:
             self.send_midi((NOTE_ON_STATUS, SID_MARKER_PO, BUTTON_STATE_OFF))
-# okay decompiling C:\ProgramData\Ableton\Live 11 Suite\Resources\MIDI Remote Scripts\MackieControl_UF8\Transport.pyc
+# okay decompiling C:\ProgramData\Ableton\Live 12 Suite\Resources\MIDI Remote Scripts\MackieControl_UF8\Transport.pyc

@@ -1,6 +1,6 @@
 # Set the source and destination folder paths
 $sourceFolderPath = Join-Path $PSScriptRoot "MackieControl_UF8"  # Use MackieControl_UF8 in the current location
-$destinationFolderPath = "C:\ProgramData\Ableton\Live 11 Suite\Resources\MIDI Remote Scripts\MackieControl_UF8"
+$destinationFolderPath = "C:\ProgramData\Ableton\Live 12 Suite\Resources\MIDI Remote Scripts\MackieControl_UF8"
 
 # List of files to be copied
 $filesToCopy = @(

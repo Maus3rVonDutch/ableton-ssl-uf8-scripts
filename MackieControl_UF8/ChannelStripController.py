@@ -2,8 +2,8 @@
 # Python bytecode version base 3.7.0 (3394)
 # Decompiled from: Python 3.8.9 (tags/v3.8.9:a743f81, Apr  6 2021, 14:02:34) [MSC v.1928 64 bit (AMD64)]
 # Embedded file name: ..\..\..\output\Live\win_64_static\Release\python-bundle\MIDI Remote Scripts\MackieControl\ChannelStripController.py
-# Compiled at: 2023-03-03 17:20:11
-# Size of source mod 2**32: 53723 bytes
+# Compiled at: 2024-01-31 17:08:32
+# Size of source mod 2**32: 52363 bytes
 from __future__ import absolute_import, division, print_function, unicode_literals
 from builtins import chr, range
 from past.utils import old_div
@@ -765,17 +765,20 @@ class ChannelStripController(MackieControlComponent):
                 self._ChannelStripController__reassign_channel_strip_parameters(for_display_only=False)
                 self._ChannelStripController__update_assignment_display()
                 self.request_rebuild_midi_map()
-        
+
         # Maus3r next 3 lines ensure banks move to selected track.  NB only apply auto-banking when not in "returns" mode
         if self._ChannelStripController__view_returns == False:
-            selected_track = self.song().view.selected_track
-            all_tracks = self.song().visible_tracks
-            trackIndex = list(all_tracks).index(selected_track)
-            assignmentMode = self._ChannelStripController__assignment_mode
-            MackieControlComponent.log(self, f'track index [{trackIndex}] - mode [{assignmentMode}]')
+            try:
+                selected_track = self.song().view.selected_track
+                all_tracks = self.song().visible_tracks
+                trackIndex = list(all_tracks).index(selected_track)
+                assignmentMode = self._ChannelStripController__assignment_mode
+                MackieControlComponent.log(self, f'track index [{trackIndex}] - mode [{assignmentMode}]')
 
-            index = int(trackIndex/8)*8
-            self._ChannelStripController__set_channel_offset(index)
+                index = int(trackIndex/8)*8
+                self._ChannelStripController__set_channel_offset(index)
+            except:
+                MackieControlComponent.log(self, f'Auto bank error')
 
     def __on_flip_changed(self):
         self._ChannelStripController__update_flip_led()
@@ -851,4 +854,4 @@ class ChannelStripController(MackieControlComponent):
         else:
             pass
         self._ChannelStripController__ordered_plugin_parameters = result
-# okay decompiling C:\ProgramData\Ableton\Live 11 Suite\Resources\MIDI Remote Scripts\MackieControl_UF8\ChannelStripController.pyc
+# okay decompiling C:\ProgramData\Ableton\Live 12 Suite\Resources\MIDI Remote Scripts\MackieControl_UF8\ChannelStripController.pyc

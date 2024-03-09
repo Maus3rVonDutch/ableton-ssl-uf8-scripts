@@ -2,8 +2,8 @@
 # Python bytecode version base 3.7.0 (3394)
 # Decompiled from: Python 3.8.9 (tags/v3.8.9:a743f81, Apr  6 2021, 14:02:34) [MSC v.1928 64 bit (AMD64)]
 # Embedded file name: ..\..\..\output\Live\win_64_static\Release\python-bundle\MIDI Remote Scripts\MackieControl\MackieControlComponent.py
-# Compiled at: 2023-03-03 17:20:11
-# Size of source mod 2**32: 2576 bytes
+# Compiled at: 2024-01-31 17:08:32
+# Size of source mod 2**32: 2500 bytes
 from __future__ import absolute_import, print_function, unicode_literals
 from builtins import object
 import Live
@@ -50,4 +50,4 @@ class MackieControlComponent(object):
     # Maus3r
     def log(self, msg):
         self._MackieControlComponent__main_script.show_message(msg)
-# okay decompiling C:\ProgramData\Ableton\Live 11 Suite\Resources\MIDI Remote Scripts\MackieControl_UF8\MackieControlComponent.pyc
+# okay decompiling C:\ProgramData\Ableton\Live 12 Suite\Resources\MIDI Remote Scripts\MackieControl_UF8\MackieControlComponent.pyc
