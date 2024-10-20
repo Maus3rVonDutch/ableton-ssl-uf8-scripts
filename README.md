@@ -13,6 +13,8 @@ This results in 3495, which in turn maps to 3.11 (look up version here https://g
 ```
 Currently decompiling is broken, 3.11 is not supported fully by any decompiler. The most promessing is https://github.com/zrax/pycdc but that is missing a lot of opcodes
 For instructions: https://stackoverflow.com/questions/71278961/how-can-i-decompile-pyc-files-from-python-3-10
+
+For now turning to this online compiler: https://pylingual.io/, it seems to do the job, sadly one file at a time though
 ```
 
 
