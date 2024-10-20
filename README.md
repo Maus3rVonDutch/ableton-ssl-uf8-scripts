@@ -1,6 +1,21 @@
 # ableton-ssl-uf8-scripts
 SSL UF8 Ableton Push 2 (modified MackieControl midi remote scripts)
 
+```
+NB as of version ABleton 12.1, the remote scripts need to be compiled with Python 3.11.6.
+```
+To retrieve the magic number (which in turn maps to a Python version) use this command:
+```
+py .\extract_magic_number.py __init__.pyc
+```
+This results in 3495, which in turn maps to 3.11 (look up version here https://github.com/python/cpython/blob/main/Include/internal/pycore_magic_number.h)
+
+```
+Currently decompiling is broken, 3.11 is not supported fully by any decompiler. The most promessing is https://github.com/zrax/pycdc but that is missing a lot of opcodes
+For instructions: https://stackoverflow.com/questions/71278961/how-can-i-decompile-pyc-files-from-python-3-10
+```
+
+
 # What problem does this script solve?
 I modified the MackieControl scripts for my personal needs. Originally the Channel Encoder of the UF8 is used to scroll through the channels on the UF8 only (and does nothing to Ableton's view or selection). This might soothe your needs, but it was not working for me.  
 

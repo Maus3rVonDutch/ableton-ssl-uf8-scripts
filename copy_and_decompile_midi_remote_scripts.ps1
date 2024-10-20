@@ -6,6 +6,9 @@
 $sourceFolderPath = "C:\ProgramData\Ableton\Live 12 Suite\Resources\MIDI Remote Scripts\MackieControl"
 $destinationFolderPath = "C:\ProgramData\Ableton\Live 12 Suite\Resources\MIDI Remote Scripts\MackieControl_UF8"
 
+# Remove existing directory
+Remove-Item -Path $destinationFolderPath -Recurse -Force
+
 # Copy the source folder to the destination folder
 Copy-Item -Path $sourceFolderPath -Destination $destinationFolderPath -Recurse
 
@@ -35,8 +38,10 @@ foreach ($file in $filesToDecompile) {
 
     # Check if the source file exists
     if (Test-Path -Path $sourceFilePath -PathType Leaf) {
+        Write-Host "Processing: $($file)"
+
         # Decompiling the file using decompyle3
-        decompyle3 $sourceFilePath > $outputFilePath
+        & "..\pycdc\Debug\pycdc.exe" $sourceFilePath > $outputFilePath
 
         # Read the content and save with UTF-8 encoding without BOM
         $content = Get-Content -Path $outputFilePath
