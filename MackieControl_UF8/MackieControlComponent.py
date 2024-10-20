@@ -46,3 +46,7 @@ class MackieControlComponent(object):
 
     def request_rebuild_midi_map(self):
         self.__main_script.request_rebuild_midi_map()
+    
+    # Maus3r
+    def log(self, msg):
+        self.__main_script.show_message(msg)

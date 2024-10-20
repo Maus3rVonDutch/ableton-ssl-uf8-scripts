@@ -205,3 +205,9 @@ class MackieControl(object):
         elif switch_id == SID_DISPLAY_SMPTE_BEATS:
             if value == BUTTON_PRESSED:
                 self.__time_display.toggle_mode()
+    
+    # Maus3r
+    def show_message(self, msg):
+        print(msg)
+        # uncomment line to enable debug messages
+        # self._MackieControl__c_instance.show_message(f'[Maus3r] {msg}')  
